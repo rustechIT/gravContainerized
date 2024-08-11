@@ -69,11 +69,11 @@ ARG GRAV_VERSION=latest
 
 # Install grav + my edits
 WORKDIR /var/www/html
-RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/1.7.46 && \
-    unzip grav-admin.zip && \
-    mv /var/www/html/grav-admin /var/www/html/grav && \
+RUN curl -o grav.zip -SL https://getgrav.org/download/core/grav/1.7.46 && \
+    unzip grav.zip && \
+    # mv /var/www/html/grav-admin /var/www/html/grav && \
     # mv -T /var/www/grav-admin /var/www/html && \
-    rm grav-admin.zip
+    rm grav.zip
 
 
 # don't know how that works so, leaving it off
