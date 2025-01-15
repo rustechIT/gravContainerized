@@ -1,7 +1,7 @@
 # FROM ubuntu/apache2:2.4-22.04_edge
 # FROM php:8.3.8
 
-FROM php:8.3.8-apache
+FROM php:8.4.1-apache
 
 
 # Enable Apache Rewrite + Expires Module
