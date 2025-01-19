@@ -1,0 +1,63 @@
+absolute_urls: false
+
+home:
+  alias: '/home'
+
+pages:
+  theme: gateway #i like this one, but default is quark
+  markdown:
+    extra: false
+  process:
+    markdown: true
+    twig: false
+
+#force_ssl: true #use https only, redirects http to https, enable for prod instances
+                 # for dev i have disabled otherwise it wont work
+
+cache:
+  enabled: true
+  check:
+    method: hash
+#  driver: auto
+#  prefix: 'g'
+
+twig:
+  cache: true
+  debug: false #not good to display debug messages on prod site
+  auto_reload: false # Optimization, disables file modification checks for twig files
+  autoescape: true # Protects from many XSS attacks, but requires twig updates if used in older sites/themes/plugins
+
+assets:
+  css_pipeline: false
+  css_minify: true
+  css_rewrite: true
+  js_pipeline: false
+  js_module_pipeline: false
+  js_minify: true
+
+errors:
+  display: 0 # display only a simple error
+  log: true #log errors for later inspection
+
+debugger:
+  enabled: false # never keep debugger enabled in live site
+  censored: true # in case debugger is enabled by accident, avoid displaying
+#  twig: true
+#  shutdown:
+#    close_connection: true
+
+session:
+  enabled: false # set this to disabled if you do NOT use user login and/or forms
+ # secure: true #use this as your site should be using HTTPS only
+ # enable for prod instances, for dev it's off otherwise it wont work
+  httponly: true #protects session cookies against client side scripts and CSS
+  samesite: Strict #prevent all cross -site scripting attacks
+  split: true #separate admin session from the site session for added security
+
+strict_mode: #Test your site before changing these. Removes backward compatibility and improves site security.
+  yaml_compat: false
+  twig_compat: false
+  blueprint_compat: false
+
+gpm:
+  verify_peer: true
