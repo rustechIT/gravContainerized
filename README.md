@@ -26,8 +26,8 @@ Going to be in the Wiki for this repo but that's not build out yet.
 Cloud native deployment to be used for any cloud provider (for example Azure Container Services or AWS ECS).
 
 ## Project Roadmap (as of right now)
-Phase 1: Update Dockerfile and docker-compose.yaml with industry standard security configurations for Apache, Grav, and Firewall rules (both of the container and the cloud network).  
+Phase 1: Update Dockerfile and docker-compose.yaml with industry standard security configurations for Apache and Grav.  
 Phase 2: Configure Kubernetes as the Docker orchestrator for cloud deployment and autoscaling (and industry standard security configuration).  
 
 ## Project Status
-So far the best way I have figured out to get this done is by deploying on an Ubuntu VM and confguring Apache, Grav, Firewall rules there and then translating them into the docker container. This is done by configuring the /etc/apache2/apache2.conf and /etc/apache2/envvars and the sites-available conf file for your site on the VM and then copying those files into the container when building an image with the dockerfile. Currently building the Ubuntu VM with the Apache, Grav and Firewall configurations to be later added to the docker container. 
+So far I have all the configurations ready for the initial server deployment (as many security configurations are implemented as is practical). Now using them to configure Docker images, which includes mounting a folder on the host to the container for persistent storage.

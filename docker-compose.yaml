@@ -1,7 +1,6 @@
-version: 4.31.0
 services:
   grav:
-    image: gmarioni/grav-containerized:ver0
+    image: yourusername/imagetag
     ports:
       - "80:80"
     # restart: always
