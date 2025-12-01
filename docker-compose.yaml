@@ -1,6 +1,9 @@
 services:
   grav:
-    image: yourusername/imagetag
+    image: yourusername/image:tag
     ports:
       - "80:80"
     # restart: always
+    volumes:
+      - ./grav-pages:/var/www/html/grav/user/pages
+    restart: unless-stopped

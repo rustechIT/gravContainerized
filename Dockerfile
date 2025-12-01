@@ -63,6 +63,10 @@ WORKDIR /var/www/html
 RUN curl -o grav.zip -SL https://getgrav.org/download/core/grav/1.7.48 && \
     unzip grav.zip && \
     rm grav.zip
+WORKDIR /var/www/html/grav/user/pages/01.home
+RUN rm -f default.md
+WORKDIR /var/www/html/grav/user/pages
+RUN rm -fr 02.typography
 # install desired themes (cURLing them does not work because when it downloads the name throws off the unzip so you have to download them from grav and save them in the same directory)
 COPY desiredtheme /var/www/html/grav/user/themes/desiretheme
 # preconfigure ahead of time    
@@ -73,4 +77,24 @@ COPY system.yaml /var/www/html/grav/user/config
 COPY hostname /etc/
 # preconfigure ahead of time
 COPY hosts /etc/
-# RUN service apache2 restart
+# clear cache, good for a clean deployment, optional though
+WORKDIR /var/www/html/grav/cache
+RUN rm -fr *
+# delete default page
+WORKDIR /var/www/html/grav/user/pages/01.home
+RUN rm -f default.md
+# required for this to work in my testing
+USER root
+
+# Create entrypoint script to ensure proper permissions
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Define volume for persistent pages only
+VOLUME ["/var/www/html/grav/user/pages"]
+
+# Set the entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+# Start Apache
+CMD ["apache2-foreground"]

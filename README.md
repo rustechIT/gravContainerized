@@ -30,4 +30,4 @@ Phase 1: Update Dockerfile and docker-compose.yaml with industry standard securi
 Phase 2: Configure Kubernetes as the Docker orchestrator for cloud deployment and autoscaling (and industry standard security configuration).  
 
 ## Project Status
-So far I have all the configurations ready for the initial server deployment (as many security configurations are implemented as is practical). Now using them to configure Docker images, which includes mounting a folder on the host to the container for persistent storage.
+So far I have all the configurations ready for the initial server deployment (as many security configurations are implemented as is practical). I just tested configurations for mounted volumes for persistent storage; need to perfect it.
